@@ -3,11 +3,12 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 // import { PlatformTouchable } from './components/PlatformTouchable';
 import AppButton from './components/AppButton/index';
 import Counter from './components/PlayAround/Counter';
+import AddToCartButton from './components/AddToCartButton';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Counter />
+      <AddToCartButton />
     </View>
   );
 }
