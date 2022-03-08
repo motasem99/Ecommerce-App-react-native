@@ -6,7 +6,11 @@ import AppButton from './components/AppButton/index';
 export default function App() {
   return (
     <View style={styles.container}>
-      <AppButton title='Done' onPress={() => alert('say hello')} />
+      <AppButton
+        title='Done'
+        onPress={() => alert('say hello')}
+        isLoading={true}
+      />
     </View>
   );
 }
