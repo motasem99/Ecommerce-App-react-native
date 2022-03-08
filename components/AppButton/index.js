@@ -3,16 +3,6 @@ import { Text, ActivityIndicator } from 'react-native';
 import PlatformTouchable from '../PlatformTouchable';
 import styles from './stylesAppButton';
 
-// export class AppButton extends React.Component {
-//   render() {
-//     return (
-//       <PlatformTouchable style={styles.wrapper}>
-//         <Text style={styles.title}>Done</Text>
-//       </PlatformTouchable>
-//     );
-//   }
-// }
-
 export default function AppButton({
   title,
   wrapperStyle,

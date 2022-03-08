@@ -2,15 +2,12 @@ import React from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 // import { PlatformTouchable } from './components/PlatformTouchable';
 import AppButton from './components/AppButton/index';
+import Counter from './components/PlayAround/Counter';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <AppButton
-        title='Done'
-        onPress={() => alert('say hello')}
-        isLoading={true}
-      />
+      <Counter />
     </View>
   );
 }
