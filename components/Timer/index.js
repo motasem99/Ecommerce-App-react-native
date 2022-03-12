@@ -1,26 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { View, Text } from 'react-native';
 import { formateTimer } from '../../utils/helperFunctions';
 
 export default function index({ maxSeconds, descending, deadLineFunction }) {
   const [seconds, setSeconds] = useState(descending ? maxSeconds : 0);
 
-  const setTime = () => {
-    const deadVal = descending ? 0 : maxSeconds;
-    const interval = setInterval(() => {
-      if (seconds === deadVal) {
-        clearInterval(interval);
-        deadLineFunction();
-        return;
-      }
-
-      setSeconds(descending ? seconds - 1 : seconds + 1);
+  let interval;
+  useEffect(() => {
+    interval = setInterval(() => {
+      setSeconds((prevSeconds) =>
+        descending ? prevSeconds - 1 : prevSeconds + 1
+      );
     }, 1000);
-  };
+    return () => clearInterval(interval);
+  }, [seconds]);
 
   useEffect(() => {
-    setTime();
-  }, []);
+    const deadLineVal = descending ? 0 : maxSeconds;
+    if (seconds === deadLineVal) {
+      clearInterval(interval);
+      deadLineFunction();
+    }
+  }, [seconds]);
 
   return <Text>{formateTimer(seconds)}</Text>;
 }

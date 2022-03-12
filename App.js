@@ -11,8 +11,8 @@ export default function App() {
     <View style={styles.container}>
       <Timer
         maxSeconds={5}
-        descending={false}
-        deadLineFunction={() => alert('ended')}
+        descending={true}
+        deadLineFunction={() => alert('time up')}
       />
     </View>
   );
