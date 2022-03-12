@@ -4,11 +4,16 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 import AppButton from './components/AppButton/index';
 import Counter from './components/PlayAround/Counter';
 import AddToCartButton from './components/AddToCartButton';
+import Timer from './components/Timer';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <AddToCartButton />
+      <Timer
+        maxSeconds={5}
+        descending={false}
+        deadLineFunction={() => alert('ended')}
+      />
     </View>
   );
 }
