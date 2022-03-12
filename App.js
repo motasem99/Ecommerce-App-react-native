@@ -5,24 +5,21 @@ import AppButton from './components/AppButton/index';
 import Counter from './components/PlayAround/Counter';
 import AddToCartButton from './components/AddToCartButton';
 import Timer from './components/Timer';
+import FlexBox from './components/PlayAround/FlexBox';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Timer
-        maxSeconds={5}
-        descending={true}
-        deadLineFunction={() => alert('time up')}
-      />
+    <View>
+      <FlexBox />
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
