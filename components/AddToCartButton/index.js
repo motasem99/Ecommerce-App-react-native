@@ -26,10 +26,14 @@ export default function AddToCartButton() {
 
   const renderIncreaseDecreaseButton = () => {
     return (
-      <View style={[styles.increaseDecreaseContainer, styles.plusMinus]}>
-        <Text onPress={decrementQuantity}>-</Text>
+      <View style={[styles.increaseDecreaseContainer, styles.button]}>
+        <Text style={styles.plusMinus} onPress={decrementQuantity}>
+          -
+        </Text>
         <Text>{quantity}</Text>
-        <Text onPress={incrementQuantity}>+</Text>
+        <Text style={styles.plusMinus} onPress={incrementQuantity}>
+          +
+        </Text>
       </View>
     );
   };

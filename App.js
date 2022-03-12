@@ -8,13 +8,17 @@ import Timer from './components/Timer';
 import { Layout4 } from './components/PlayAround/FlexBox';
 
 export default function App() {
-  return <Layout4 color='red' />;
+  return (
+    <View style={styles.container}>
+      <AddToCartButton />
+    </View>
+  );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+});
