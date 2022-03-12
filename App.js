@@ -6,19 +6,16 @@ import Counter from './components/PlayAround/Counter';
 import AddToCartButton from './components/AddToCartButton';
 import Timer from './components/Timer';
 import { Layout4 } from './components/PlayAround/FlexBox';
+import { SignUpScreen } from './components/PlayAround/ResponsiveLayout';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <AddToCartButton />
-    </View>
-  );
+  return <SignUpScreen />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
