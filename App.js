@@ -5,20 +5,15 @@ import AppButton from './components/AppButton/index';
 import Counter from './components/PlayAround/Counter';
 import AddToCartButton from './components/AddToCartButton';
 import Timer from './components/Timer';
-import FlexBox from './components/PlayAround/FlexBox';
+import { Layout4 } from './components/PlayAround/FlexBox';
 
 export default function App() {
-  return (
-    <View>
-      <FlexBox />
-    </View>
-  );
+  return <Layout4 color='red' />;
 }
 
 // const styles = StyleSheet.create({
 //   container: {
 //     flex: 1,
-//     backgroundColor: '#fff',
 //     alignItems: 'center',
 //     justifyContent: 'center',
 //   },
