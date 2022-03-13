@@ -7,11 +7,13 @@ import AddToCartButton from './components/AddToCartButton';
 import Timer from './components/Timer';
 import { Layout4 } from './components/PlayAround/FlexBox';
 import { SignUpScreen } from './components/PlayAround/ResponsiveLayout';
+import CameraIcon from './components/PlayAround/CameraIcon';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Image source={require('./assets/images/camera.png')} />
+      <Text>react native</Text>
+      <CameraIcon dim={32} />
     </View>
   );
 }
