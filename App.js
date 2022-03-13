@@ -9,12 +9,12 @@ import { Layout4 } from './components/PlayAround/FlexBox';
 import { SignUpScreen } from './components/PlayAround/ResponsiveLayout';
 import CameraIcon from './components/PlayAround/CameraIcon';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Input from './components/Input';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>react native</Text>
-      <Icon name='visibility' style={{ fontSize: 32 }} />
+      <Input placeholder='Email' stacked />
     </View>
   );
 }
@@ -22,7 +22,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    marginHorizontal: 20,
   },
 });
