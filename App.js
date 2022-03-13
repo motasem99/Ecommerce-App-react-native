@@ -8,12 +8,13 @@ import Timer from './components/Timer';
 import { Layout4 } from './components/PlayAround/FlexBox';
 import { SignUpScreen } from './components/PlayAround/ResponsiveLayout';
 import CameraIcon from './components/PlayAround/CameraIcon';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function App() {
   return (
     <View style={styles.container}>
       <Text>react native</Text>
-      <CameraIcon dim={32} />
+      <Icon name='visibility' style={{ fontSize: 32 }} />
     </View>
   );
 }
