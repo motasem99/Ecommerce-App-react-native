@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import { TextInput, Text, View, Dimensions } from 'react-native';
-import EStyleSheet from 'react-native-extended-stylesheet';
-
-const styles = EStyleSheet.create({
-  inputStyle: {
-    fontSize: '18rem',
-    height: '40rem',
-    borderWidth: 1,
-    borderColor: '#bbb',
-    borderRadius: 10,
-    marginBottom: 20,
-    padding: 10,
-  },
-  button: { fontSize: '24rem', fontWeight: 'bold' },
-});
+import { rem } from '../../utils/constants';
 
 export function Input({ placeholder }) {
-  return <TextInput style={styles.inputStyle} placeholder={placeholder} />;
+  return (
+    <TextInput
+      style={{
+        fontSize: 18 * rem,
+        height: 40 * rem,
+        borderWidth: 1,
+        borderColor: '#bbb',
+        borderRadius: 10,
+        marginBottom: 20,
+        padding: 10,
+      }}
+      placeholder={placeholder}
+    />
+  );
 }
 const { width } = Dimensions.get('window');
 
@@ -51,7 +51,7 @@ export function SignUpScreen() {
         </View>
       </View>
       <View style={{ alignItems: 'center' }}>
-        <Text style={styles.button}>Sign Up</Text>
+        <Text style={{ fontSize: 24 * rem, fontWeight: 'bold' }}>Sign Up</Text>
       </View>
     </View>
   );
