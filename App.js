@@ -21,9 +21,10 @@ import {
 import Price from './components/Price';
 import Product from './components/Product';
 import HomeScreen from './screens/Home/Home';
+import CategoryScreen from './screens/Category/Home';
 
 export default function App() {
-  return <HomeScreen />;
+  return <CategoryScreen />;
 }
 
 const styles = StyleSheet.create({
