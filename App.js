@@ -12,15 +12,21 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Input from './components/Input';
 import SigninScreen from './screens/Signin/Signin';
 import ConfirmationCodeScreen from './screens/ConfirmationCode/Signin';
+import Category from './components/Category';
+import { dummyCategory } from './utils/DummyData';
 
 export default function App() {
-  return <ConfirmationCodeScreen />;
+  return (
+    <View style={styles.container}>
+      <Category category={dummyCategory} />
+    </View>
+  );
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     marginHorizontal: 20,
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
