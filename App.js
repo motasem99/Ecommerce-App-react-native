@@ -14,11 +14,12 @@ import SigninScreen from './screens/Signin/Signin';
 import ConfirmationCodeScreen from './screens/ConfirmationCode/Signin';
 import Category from './components/Category';
 import { dummyCategory } from './utils/DummyData';
+import Price from './components/Price';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Category category={dummyCategory} />
+      <Price price={100} discount={0.2} />
     </View>
   );
 }
@@ -27,5 +28,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
