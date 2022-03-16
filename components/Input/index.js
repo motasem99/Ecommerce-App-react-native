@@ -49,7 +49,7 @@ function Input({
           {...rest}
           placeholder={stacked ? '' : placeholder}
           style={[
-            { padding: 0, textAlign: placeHolderPosition || 'left' },
+            { flex: 1, padding: 0, textAlign: placeHolderPosition || 'left' },
             style,
           ]}
         />
