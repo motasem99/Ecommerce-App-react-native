@@ -24,7 +24,7 @@ function SigninScreen() {
         IconWrapperStyle={styles.iconWrapper}
       />
       <View style={styles.buttonWrapper}>
-        <AppButton title='Done' />
+        <AppButton title='DONE' />
       </View>
     </View>
   );

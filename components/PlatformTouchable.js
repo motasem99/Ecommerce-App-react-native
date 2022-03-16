@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  Text,
   View,
   TouchableOpacity,
   TouchableNativeFeedback,
@@ -21,11 +20,15 @@ import {
 //   }
 // }
 
-export default function PlatformTouchable(props) {
+export default function PlatformTouchable({ style, children, ...rest }) {
   const Touchable = Platform.select({
     ios: TouchableNativeFeedback,
     android: TouchableOpacity,
   });
 
-  return <Touchable {...props} />;
+  return (
+    <Touchable {...rest}>
+      <View style={style}>{children}</View>
+    </Touchable>
+  );
 }
