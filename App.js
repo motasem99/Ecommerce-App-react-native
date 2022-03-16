@@ -10,19 +10,16 @@ import { SignUpScreen } from './components/PlayAround/ResponsiveLayout';
 import CameraIcon from './components/PlayAround/CameraIcon';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Input from './components/Input';
+import SigninScreen from './screens/Signin/Signin';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Input placeholder='Email' stacked />
-    </View>
-  );
+  return <SigninScreen />;
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    marginHorizontal: 20,
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     marginHorizontal: 20,
+//   },
+// });
