@@ -20,13 +20,10 @@ import {
 } from './utils/DummyData';
 import Price from './components/Price';
 import Product from './components/Product';
+import HomeScreen from './screens/Home/Home';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Product product={dummyProductWithoutDiscount} />
-    </View>
-  );
+  return <HomeScreen />;
 }
 
 const styles = StyleSheet.create({
