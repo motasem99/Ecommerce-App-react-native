@@ -13,13 +13,18 @@ import Input from './components/Input';
 import SigninScreen from './screens/Signin/Signin';
 import ConfirmationCodeScreen from './screens/ConfirmationCode/Signin';
 import Category from './components/Category';
-import { dummyCategory } from './utils/DummyData';
+import {
+  dummyCategory,
+  dummyProductWithDiscount,
+  dummyProductWithoutDiscount,
+} from './utils/DummyData';
 import Price from './components/Price';
+import Product from './components/Product';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Price price={100} discount={0.2} />
+      <Product product={dummyProductWithoutDiscount} />
     </View>
   );
 }
