@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Image, Text, Platform } from 'react-native';
-import AddToCartButton from '../../components/AddToCartButton';
-import Price from '../../components/Price';
+import AddToCartButton from '../../components/AddToCartButton/AddToCartButton';
+import Price from '../../components/Price/Price';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { dummyProductWithDiscount } from '../../utils/DummyData';
-import IonIcon from '../../components/IonIcon';
+import IonIcon from '../../components/IonIcon/IonIcon';
 import styles from './Styles';
 
 const getProduct = (productId) => {

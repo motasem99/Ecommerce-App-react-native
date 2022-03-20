@@ -1,9 +1,9 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import styles from './styles';
-import Input from '../../components/Input';
+import Input from '../../components/Input/Input';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import AppButton from '../../components/AppButton';
+import AppButton from '../../components/AppButton/APpButton';
 
 function SigninScreen() {
   const renderPhoneIcon = () => {

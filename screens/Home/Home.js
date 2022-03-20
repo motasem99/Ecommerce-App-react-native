@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import Category from '../../components/Category';
-import Product from '../../components/Product';
+import Category from '../../components/Category/Category';
+import Product from '../../components/Product/Product';
 import { dummyCategory, dummyProductWithDiscount } from '../../utils/DummyData';
 import styles from './styles';
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Image, Text } from 'react-native';
 import styles from './Styles';
-import Card from '../Card';
-import Price from '../Price';
+import Card from '../Card/Card';
+import Price from '../Price/Price';
 
 function Product({ product }) {
   return (

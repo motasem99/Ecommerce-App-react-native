@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { Platform } from 'react-native';
 
-function index({ name, ...rest }) {
+function IonIcon({ name, ...rest }) {
   return (
     <Icon
       {...rest}
@@ -11,4 +11,4 @@ function index({ name, ...rest }) {
   );
 }
 
-export default index;
+export default IonIcon;

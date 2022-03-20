@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text } from 'react-native';
-import AppButton from '../AppButton';
+import AppButton from '../AppButton/APpButton';
 import styles from './Styles';
 
 export default function AddToCartButton() {
