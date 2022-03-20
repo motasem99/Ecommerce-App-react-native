@@ -49,7 +49,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppContainer from './navigation/Navigation';
 
 export default function App() {
-  return <AppContainer isAuthenticated={true} />;
+  return <AppContainer />;
 }
 
 const styles = StyleSheet.create({

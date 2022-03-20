@@ -5,7 +5,7 @@ import Input from '../../components/Input/Input';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import AppButton from '../../components/AppButton/APpButton';
 
-function SigninScreen() {
+function SigninScreen({ navigation }) {
   const renderPhoneIcon = () => {
     return <Icon style={styles.icon} name='call' />;
   };
@@ -24,7 +24,12 @@ function SigninScreen() {
         IconWrapperStyle={styles.iconWrapper}
       />
       <View style={styles.buttonWrapper}>
-        <AppButton title='DONE' />
+        <AppButton
+          title='DONE'
+          onPress={() => {
+            navigation.navigate('ConfirmationCodeScreen');
+          }}
+        />
       </View>
     </View>
   );
