@@ -7,6 +7,7 @@ import {
   Image,
   ScrollView,
   FlatList,
+  SectionList,
 } from 'react-native';
 import AppButton from './components/AppButton/APpButton';
 import Counter from './components/PlayAround/Counter';
@@ -44,56 +45,38 @@ import OrdersScreen from './screens/Orders/Orders';
 import IonIcon from './components/IonIcon/IonIcon';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
-const users = [
+const normalUsers = [
   { name: 'mohammed', phone: '21354655' },
   { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'mutasem', phone: '6666222225' },
+];
+
+const vipUsers = [
+  { name: 'noor', phone: '00000000' },
+  { name: 'shimaa', phone: '4444444444444' },
+];
+
+const sections = [
+  { title: 'normal', data: normalUsers },
+  { title: 'vip', data: vipUsers },
 ];
 
 export default function App() {
   return (
-    <FlatList
+    <SectionList
       keyExtractor={(item, index) => index.toString()}
-      data={users}
-      renderItem={({ index, item }) => {
+      sections={sections}
+      renderSectionHeader={({ section }) => <Text>{section.title}</Text>}
+      renderItem={({ index, item, section }) => {
         const { name, phone } = item;
         return (
-          <View style={styles.userContainer}>
+          <View
+            style={[
+              styles.userContainer,
+              {
+                backgroundColor: section.title === 'normal' ? 'blue' : 'green',
+              },
+            ]}
+          >
             <View style={styles.wrapper}>
               <IonIcon style={styles.icon} name='person' />
               <Text style={styles.text}>{name}</Text>
