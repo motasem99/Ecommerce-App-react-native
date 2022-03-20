@@ -41,6 +41,7 @@ import AddAddressScreen from './screens/AddAddress/AddAddress';
 import Order from './components/Order/Order';
 import OrdersScreen from './screens/Orders/Orders';
 import IonIcon from './components/IonIcon/IonIcon';
+import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const users = [
   { name: 'mohammed', phone: '21354655' },
@@ -85,7 +86,10 @@ const users = [
 
 export default function App() {
   return (
-    <ScrollView>
+    <ScrollView
+      style={{ padding: 10, backgroundColor: 'red' }}
+      contentContainerStyle={{ backgroundColor: 'blue', alignItems: 'center' }}
+    >
       {users.map((user) => {
         const { name, phone } = user;
         return (
