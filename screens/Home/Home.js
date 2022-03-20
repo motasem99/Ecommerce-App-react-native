@@ -1,11 +1,8 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { ScrollView, Text, FlatList } from 'react-native';
 import Category from '../../components/Category/Category';
-import Product from '../../components/Product/Product';
-import {
-  dummyCategories,
-  dummyProductWithDiscount,
-} from '../../utils/DummyData';
+import { dummyCategories, dummyProducts } from '../../utils/DummyData';
+import ProductsList from '../../components/ProductsList/ProductsList';
 import styles from './styles';
 
 const renderCategory = ({ item }) => {
@@ -20,12 +17,12 @@ const renderCategoriesList = (categories) => {
 
 function HomeScreen() {
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container}>
       <Text style={styles.headerText}>Categories</Text>
       {renderCategoriesList(dummyCategories)}
       <Text style={styles.headerText}>Products</Text>
-      <Product product={dummyProductWithDiscount} />
-    </View>
+      <ProductsList data={dummyProducts} />
+    </ScrollView>
   );
 }
 
