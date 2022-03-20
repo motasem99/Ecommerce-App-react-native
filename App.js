@@ -32,13 +32,10 @@ import AccountScreen from './screens/Account/Account';
 import UpdateAccountScreen from './screens/UpdateAccount/UpdateAccount';
 import AddAddressScreen from './screens/AddAddress/AddAddress';
 import Order from './components/Order/Order';
+import OrdersScreen from './screens/Orders/Orders';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <CartItem cartItem={dummyCartItem} />
-    </View>
-  );
+  return <OrdersScreen />;
 }
 
 const styles = StyleSheet.create({
