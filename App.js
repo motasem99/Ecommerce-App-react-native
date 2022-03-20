@@ -47,7 +47,7 @@ import IonIcon from './components/IonIcon/IonIcon';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 export default function App() {
-  return <CartScreen />;
+  return <OrdersScreen />;
 }
 
 const styles = StyleSheet.create({
