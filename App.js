@@ -46,15 +46,10 @@ import OrdersScreen from './screens/Orders/Orders';
 import IonIcon from './components/IonIcon/IonIcon';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { NavigationContainer } from '@react-navigation/native';
+import AppContainer from './navigation/Navigation';
 
 export default function App() {
-  return (
-    <NavigationContainer>
-      <View style={styles.container}>
-        <Text>Hi react native</Text>
-      </View>
-    </NavigationContainer>
-  );
+  return <AppContainer isAuthenticated={true} />;
 }
 
 const styles = StyleSheet.create({
