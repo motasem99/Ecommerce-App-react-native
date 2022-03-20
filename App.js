@@ -29,11 +29,12 @@ import Checkout from './screens/Checkout/Checkout';
 import SearchScreen from './screens/Search/Search';
 import AccountScreen from './screens/Account/Account';
 import UpdateAccountScreen from './screens/UpdateAccount/UpdateAccount';
+import AddAddressScreen from './screens/AddAddress/AddAddress';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <UpdateAccountScreen />
+      <AddAddressScreen />
     </View>
   );
 }
