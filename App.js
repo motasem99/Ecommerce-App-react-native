@@ -25,13 +25,10 @@ import HomeScreen from './screens/Home/Home';
 import CategoryScreen from './screens/Category/Home';
 import ProductScreen from './screens/Product/Product';
 import CartItem from './components/CartItem/CartItem';
+import CartScreen from './screens/Cart/Cart';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <CartItem cartItem={dummyCartItem} />
-    </View>
-  );
+  return <CartScreen />;
 }
 
 const styles = StyleSheet.create({
