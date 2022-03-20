@@ -26,15 +26,19 @@ import CategoryScreen from './screens/Category/Home';
 import ProductScreen from './screens/Product/Product';
 import CartItem from './components/CartItem/CartItem';
 import CartScreen from './screens/Cart/Cart';
+import Checkout from './screens/Checkout/Checkout';
 
 export default function App() {
-  return <CartScreen />;
+  return (
+    <View style={styles.container}>
+      <Checkout />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
   },
 });
