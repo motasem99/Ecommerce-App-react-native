@@ -27,11 +27,12 @@ import ProductScreen from './screens/Product/Product';
 import CartItem from './components/CartItem/CartItem';
 import CartScreen from './screens/Cart/Cart';
 import Checkout from './screens/Checkout/Checkout';
+import SearchScreen from './screens/Search/Search';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Checkout />
+      <SearchScreen />
     </View>
   );
 }
