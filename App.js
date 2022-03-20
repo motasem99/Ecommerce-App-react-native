@@ -17,6 +17,7 @@ import {
   dummyProductWithDiscount,
   dummyProductWithoutDiscount,
   dummyCartItem,
+  dummyOrder,
 } from './utils/DummyData';
 import Price from './components/Price/Price';
 import Product from './components/Product/Product';
@@ -30,11 +31,12 @@ import SearchScreen from './screens/Search/Search';
 import AccountScreen from './screens/Account/Account';
 import UpdateAccountScreen from './screens/UpdateAccount/UpdateAccount';
 import AddAddressScreen from './screens/AddAddress/AddAddress';
+import Order from './components/Order/Order';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <AddAddressScreen />
+      <CartItem cartItem={dummyCartItem} />
     </View>
   );
 }
