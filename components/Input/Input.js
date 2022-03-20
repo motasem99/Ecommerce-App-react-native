@@ -38,7 +38,7 @@ function Input({
         wrapperStyle,
       ]}
     >
-      {stacked && <Text>{placeholder}</Text>}
+      {stacked && <Text style={{ color: '#bbb' }}>{placeholder}</Text>}
       <View style={{ flexDirection: 'row' }}>
         {renderIconLeft && (
           <View style={[styles.iconWrapper, IconWrapperStyle]}>
@@ -61,7 +61,7 @@ function Input({
         <View
           style={{
             height: underlinedHeight || 1,
-            backgroundColor: underlinedColor || '#bbb',
+            backgroundColor: underlinedColor || '#bbbbbb80',
           }}
         />
       )}
