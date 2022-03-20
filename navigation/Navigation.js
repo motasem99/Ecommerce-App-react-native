@@ -2,10 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import AuthStack from './AuthStack';
-
-const HomeTabs = () => {
-  return <Text>Home Tabs</Text>;
-};
+import HomeTabs from './HomeTabs';
 
 function AppContainer({ isAuthenticated }) {
   return (
