@@ -46,52 +46,8 @@ import OrdersScreen from './screens/Orders/Orders';
 import IonIcon from './components/IonIcon/IonIcon';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
-const users = [
-  { name: 'mohammed', phone: '21354655' },
-  { name: 'mutasem', phone: '6666222225' },
-  { name: 'noor', phone: '5341351' },
-  { name: 'shimaa', phone: '6688877788' },
-];
-
 export default function App() {
-  const [selectedUser, setSelectedUser] = useState('mutasem');
-  const keyExtractor = (item, index) => index.toString;
-
-  const handleClick = (userName) => {
-    setSelectedUser(userName);
-  };
-
-  const renderItem = ({ index, item }) => {
-    const { name, phone } = item;
-    const isSelected = name === selectedUser;
-    return (
-      <TouchableOpacity
-        style={[
-          styles.userContainer,
-          { backgroundColor: isSelected ? 'red' : 'green' },
-        ]}
-        onPress={() => handleClick(name)}
-      >
-        <View style={styles.wrapper}>
-          <IonIcon style={styles.icon} name='person' />
-          <Text style={styles.text}>{name}</Text>
-        </View>
-        <View style={styles.wrapper}>
-          <IonIcon style={styles.icon} name='call' />
-          <Text style={styles.text}>{phone}</Text>
-        </View>
-      </TouchableOpacity>
-    );
-  };
-
-  return (
-    <FlatList
-      keyExtractor={keyExtractor}
-      data={users}
-      renderItem={renderItem}
-      extraData={selectedUser}
-    />
-  );
+  return <HomeScreen />;
 }
 
 const styles = StyleSheet.create({
