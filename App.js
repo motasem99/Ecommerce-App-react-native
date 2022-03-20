@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, Text, View, Button, Image } from 'react-native';
-// import { PlatformTouchable } from './components/PlatformTouchable';
 import AppButton from './components/AppButton/APpButton';
 import Counter from './components/PlayAround/Counter';
 import AddToCartButton from './components/AddToCartButton/AddToCartButton';
@@ -28,11 +27,12 @@ import CartItem from './components/CartItem/CartItem';
 import CartScreen from './screens/Cart/Cart';
 import Checkout from './screens/Checkout/Checkout';
 import SearchScreen from './screens/Search/Search';
+import AccountScreen from './screens/Account/Account';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <SearchScreen />
+      <AccountScreen />
     </View>
   );
 }
