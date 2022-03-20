@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -8,6 +8,7 @@ import {
   ScrollView,
   FlatList,
   SectionList,
+  TouchableOpacity,
 } from 'react-native';
 import AppButton from './components/AppButton/APpButton';
 import Counter from './components/PlayAround/Counter';
@@ -45,49 +46,50 @@ import OrdersScreen from './screens/Orders/Orders';
 import IonIcon from './components/IonIcon/IonIcon';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
-const normalUsers = [
+const users = [
   { name: 'mohammed', phone: '21354655' },
   { name: 'mutasem', phone: '6666222225' },
-];
-
-const vipUsers = [
-  { name: 'noor', phone: '00000000' },
-  { name: 'shimaa', phone: '4444444444444' },
-];
-
-const sections = [
-  { title: 'normal', data: normalUsers },
-  { title: 'vip', data: vipUsers },
+  { name: 'noor', phone: '5341351' },
+  { name: 'shimaa', phone: '6688877788' },
 ];
 
 export default function App() {
+  const [selectedUser, setSelectedUser] = useState('mutasem');
+  const keyExtractor = (item, index) => index.toString;
+
+  const handleClick = (userName) => {
+    setSelectedUser(userName);
+  };
+
+  const renderItem = ({ index, item }) => {
+    const { name, phone } = item;
+    const isSelected = name === selectedUser;
+    return (
+      <TouchableOpacity
+        style={[
+          styles.userContainer,
+          { backgroundColor: isSelected ? 'red' : 'green' },
+        ]}
+        onPress={() => handleClick(name)}
+      >
+        <View style={styles.wrapper}>
+          <IonIcon style={styles.icon} name='person' />
+          <Text style={styles.text}>{name}</Text>
+        </View>
+        <View style={styles.wrapper}>
+          <IonIcon style={styles.icon} name='call' />
+          <Text style={styles.text}>{phone}</Text>
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
-    <SectionList
-      keyExtractor={(item, index) => index.toString()}
-      sections={sections}
-      renderSectionHeader={({ section }) => <Text>{section.title}</Text>}
-      renderItem={({ index, item, section }) => {
-        const { name, phone } = item;
-        return (
-          <View
-            style={[
-              styles.userContainer,
-              {
-                backgroundColor: section.title === 'normal' ? 'blue' : 'green',
-              },
-            ]}
-          >
-            <View style={styles.wrapper}>
-              <IonIcon style={styles.icon} name='person' />
-              <Text style={styles.text}>{name}</Text>
-            </View>
-            <View style={styles.wrapper}>
-              <IonIcon style={styles.icon} name='call' />
-              <Text style={styles.text}>{phone}</Text>
-            </View>
-          </View>
-        );
-      }}
+    <FlatList
+      keyExtractor={keyExtractor}
+      data={users}
+      renderItem={renderItem}
+      extraData={selectedUser}
     />
   );
 }
