@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Image, Text } from 'react-native';
+import { View, Image, Text, Platform } from 'react-native';
 import AddToCartButton from '../../components/AddToCartButton';
 import Price from '../../components/Price';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { dummyProductWithDiscount } from '../../utils/DummyData';
+import IonIcon from '../../components/IonIcon';
 import styles from './Styles';
 
 const getProduct = (productId) => {
@@ -17,7 +18,7 @@ function ProductScreen({ productId }) {
     <View style={styles.container}>
       <Image source={{ uri: product.imageUrl }} style={styles.image} />
       <View style={styles.iconTitleWrapper}>
-        <Icon name='arrow-back' style={styles.backIcon} />
+        <IonIcon name='arrow-back' style={styles.backIcon} />
         <View style={styles.titleWrapper}>
           <Text style={styles.productTitle}>{product.title}</Text>
         </View>
