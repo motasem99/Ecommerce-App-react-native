@@ -86,14 +86,11 @@ const users = [
 
 export default function App() {
   return (
-    <ScrollView
-      style={{ padding: 10, backgroundColor: 'red' }}
-      contentContainerStyle={{ backgroundColor: 'blue', alignItems: 'center' }}
-    >
-      {users.map((user) => {
+    <ScrollView>
+      {users.map((user, index) => {
         const { name, phone } = user;
         return (
-          <View style={styles.userContainer}>
+          <View key={index.toString()} style={styles.userContainer}>
             <View style={styles.wrapper}>
               <IonIcon style={styles.icon} name='person' />
               <Text style={styles.text}>{name}</Text>
