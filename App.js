@@ -45,9 +45,16 @@ import Order from './components/Order/Order';
 import OrdersScreen from './screens/Orders/Orders';
 import IonIcon from './components/IonIcon/IonIcon';
 import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
+import { NavigationContainer } from '@react-navigation/native';
 
 export default function App() {
-  return <OrdersScreen />;
+  return (
+    <NavigationContainer>
+      <View style={styles.container}>
+        <Text>Hi react native</Text>
+      </View>
+    </NavigationContainer>
+  );
 }
 
 const styles = StyleSheet.create({
