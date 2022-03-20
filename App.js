@@ -1,5 +1,12 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, Text, View, Button, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  Image,
+  ScrollView,
+} from 'react-native';
 import AppButton from './components/AppButton/APpButton';
 import Counter from './components/PlayAround/Counter';
 import AddToCartButton from './components/AddToCartButton/AddToCartButton';
@@ -33,14 +40,75 @@ import UpdateAccountScreen from './screens/UpdateAccount/UpdateAccount';
 import AddAddressScreen from './screens/AddAddress/AddAddress';
 import Order from './components/Order/Order';
 import OrdersScreen from './screens/Orders/Orders';
+import IonIcon from './components/IonIcon/IonIcon';
+
+const users = [
+  { name: 'mohammed', phone: '21354655' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+  { name: 'mutasem', phone: '6666222225' },
+];
 
 export default function App() {
-  return <OrdersScreen />;
+  return (
+    <ScrollView>
+      {users.map((user) => {
+        const { name, phone } = user;
+        return (
+          <View style={styles.userContainer}>
+            <View style={styles.wrapper}>
+              <IonIcon style={styles.icon} name='person' />
+              <Text style={styles.text}>{name}</Text>
+            </View>
+            <View style={styles.wrapper}>
+              <IonIcon style={styles.icon} name='call' />
+              <Text style={styles.text}>{phone}</Text>
+            </View>
+          </View>
+        );
+      })}
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
