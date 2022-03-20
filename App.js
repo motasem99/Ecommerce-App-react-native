@@ -6,6 +6,7 @@ import {
   Button,
   Image,
   ScrollView,
+  FlatList,
 } from 'react-native';
 import AppButton from './components/AppButton/APpButton';
 import Counter from './components/PlayAround/Counter';
@@ -86,11 +87,13 @@ const users = [
 
 export default function App() {
   return (
-    <ScrollView>
-      {users.map((user, index) => {
-        const { name, phone } = user;
+    <FlatList
+      keyExtractor={(item, index) => index.toString()}
+      data={users}
+      renderItem={({ index, item }) => {
+        const { name, phone } = item;
         return (
-          <View key={index.toString()} style={styles.userContainer}>
+          <View style={styles.userContainer}>
             <View style={styles.wrapper}>
               <IonIcon style={styles.icon} name='person' />
               <Text style={styles.text}>{name}</Text>
@@ -101,8 +104,8 @@ export default function App() {
             </View>
           </View>
         );
-      })}
-    </ScrollView>
+      }}
+    />
   );
 }
 
