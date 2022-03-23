@@ -21,6 +21,13 @@ function HomeTabs() {
           AccountStack: 'person',
         };
 
+        const label = {
+          HomeStack: 'Shop',
+          CartStack: 'Cart',
+          SearchStack: 'Search',
+          AccountStack: 'Account',
+        };
+
         return {
           tabBarIcon: ({ focused }) => (
             <IonIcon
@@ -28,13 +35,36 @@ function HomeTabs() {
               style={{ color: focused ? TINT_COLOR : 'black', fontSize: 26 }}
             />
           ),
+          tabBarLabel: ({ focused }) => (
+            <Text
+              style={{ color: focused ? TINT_COLOR : 'black', fontSize: 15 }}
+            >
+              {label[route.name]}
+            </Text>
+          ),
         };
       }}
     >
-      <Tab.Screen name='HomeStack' component={HomeStack} />
-      <Tab.Screen name='CartStack' component={CartStack} />
-      <Tab.Screen name='SearchStack' component={SearchStack} />
-      <Tab.Screen name='AccountStack' component={AccountStack} />
+      <Tab.Screen
+        options={{ headerShown: false }}
+        name='HomeStack'
+        component={HomeStack}
+      />
+      <Tab.Screen
+        options={{ headerShown: false }}
+        name='CartStack'
+        component={CartStack}
+      />
+      <Tab.Screen
+        options={{ headerShown: false }}
+        name='SearchStack'
+        component={SearchStack}
+      />
+      <Tab.Screen
+        options={{ headerShown: false }}
+        name='AccountStack'
+        component={AccountStack}
+      />
     </Tab.Navigator>
   );
 }
