@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import PlatformTouchable from '../../components/PlatformTouchable';
 import IonIcon from '../../components/IonIcon/IonIcon';
 import styles from './Styles';
 
@@ -17,34 +18,40 @@ const renderInfoSection = () => {
   );
 };
 
-const renderButton = (iconName, title) => {
+const renderButton = (iconName, title, onPress) => {
   return (
-    <View style={styles.button}>
+    <PlatformTouchable style={styles.button} onPress={onPress}>
       <View style={styles.iconTitleWrapper}>
         <IonIcon name={iconName} style={styles.icon} />
         <Text style={styles.title}>{title}</Text>
       </View>
       <View style={styles.horizontalLine} />
-    </View>
+    </PlatformTouchable>
   );
 };
 
-const renderButtonSection = () => {
+const renderButtonSection = (navigation) => {
   return (
     <View>
-      {renderButton('person', 'Profile')}
-      {renderButton('place', 'Shipping Address')}
-      {renderButton('shop', 'Previous Orders')}
-      {renderButton('logout', 'Log Out')}
+      {renderButton('person', 'Profile', () => {
+        navigation.navigate('UpdateAccountScreen');
+      })}
+      {renderButton('place', 'Shipping Address', () => {
+        navigation.navigate('AddAddressScreen');
+      })}
+      {renderButton('shop', 'Previous Orders', () => {
+        navigation.navigate('OrdersScreen');
+      })}
+      {renderButton('logout', 'Log Out', () => {})}
     </View>
   );
 };
 
-function AccountScreen() {
+function AccountScreen({ navigation }) {
   return (
     <View style={styles.container}>
       {renderInfoSection()}
-      {renderButtonSection()}
+      {renderButtonSection(navigation)}
     </View>
   );
 }

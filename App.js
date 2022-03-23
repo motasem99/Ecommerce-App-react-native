@@ -32,7 +32,7 @@ import {
 import Price from './components/Price/Price';
 import Product from './components/Product/Product';
 import HomeScreen from './screens/Home/Home';
-import CategoryScreen from './screens/Category/Home';
+import CategoryScreen from './screens/Category/Category';
 import ProductScreen from './screens/Product/Product';
 import CartItem from './components/CartItem/CartItem';
 import CartScreen from './screens/Cart/Cart';
