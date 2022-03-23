@@ -50,7 +50,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppContainer from './navigation/Navigation';
 
 export default function App() {
-  const [inputVal, setInputVal] = useState('');
+  const [input, setInputVal] = useState({
+    value: '',
+    isValid: false,
+  });
 
   const validatePhone = (enteredPhone) => {
     if (enteredPhone.length !== 11) {
@@ -61,12 +64,16 @@ export default function App() {
     return /^[0-9]+$/.test(enteredPhone);
   };
 
+  const updateInput = (inputVal) => {
+    setInputVal({ value: inputVal, isValid: validatePhone(inputVal) });
+  };
+
   const submitHandler = () => {
-    if (!validatePhone(inputVal)) {
+    if (!input.isValid) {
       alert('something wrong');
       return;
     }
-    alert('you entered' + inputVal);
+    alert('you entered' + input.value);
   };
 
   return (
@@ -74,9 +81,10 @@ export default function App() {
       <TextInput
         placeholder='Enter Phone'
         style={styles.input}
-        onChangeText={setInputVal}
+        onChangeText={updateInput}
       />
       <Button title='SUBMIT' onPress={submitHandler} />
+      <Text>Your input is valid? {input.isValid.toString()} </Text>
     </View>
   );
 }
