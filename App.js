@@ -53,6 +53,7 @@ export default function App() {
   const [input, setInputVal] = useState({
     value: '',
     isValid: false,
+    touched: false,
   });
 
   const validatePhone = (enteredPhone) => {
@@ -65,7 +66,11 @@ export default function App() {
   };
 
   const updateInput = (inputVal) => {
-    setInputVal({ value: inputVal, isValid: validatePhone(inputVal) });
+    setInputVal({
+      value: inputVal,
+      isValid: validatePhone(inputVal),
+      touched: true,
+    });
   };
 
   const submitHandler = () => {
@@ -78,10 +83,13 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <TextInput
+      <Input
         placeholder='Enter Phone'
-        style={styles.input}
         onChangeText={updateInput}
+        bordered
+        showValidationFeedback
+        isValid={input.isValid}
+        touched={input.touched}
       />
       <Button title='SUBMIT' onPress={submitHandler} />
       <Text>Your input is valid? {input.isValid.toString()} </Text>
