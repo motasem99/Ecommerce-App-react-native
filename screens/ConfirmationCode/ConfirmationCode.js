@@ -4,21 +4,10 @@ import styles from './styles';
 import Input from '../../components/Input/Input';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import AppButton from '../../components/AppButton/APpButton';
-import { validate } from '../../utils/validate';
-function ConfirmationCodeScreen() {
-  const [input, setInputVal] = useState({
-    value: '',
-    isValid: false,
-    touched: false,
-  });
+import { useInput } from '../../utils/useInput';
 
-  const updateInput = (inputVal) => {
-    setInputVal({
-      value: inputVal,
-      isValid: validate(inputVal, [{ key: 'isConfirmationCode' }]),
-      touched: true,
-    });
-  };
+function ConfirmationCodeScreen() {
+  const [input, setInputVal] = useInput('', [{ key: 'isConfirmationCode' }]);
 
   const doneHandler = () => {
     if (!input.isValid) {
@@ -38,7 +27,7 @@ function ConfirmationCodeScreen() {
         placeHolderPosition='center'
         wrapperStyle={styles.inputWrapper}
         IconWrapperStyle={styles.iconWrapper}
-        onChangeText={updateInput}
+        onChangeText={setInputVal}
         onSubmitEditing={doneHandler}
         keyboardType='numeric'
       />
