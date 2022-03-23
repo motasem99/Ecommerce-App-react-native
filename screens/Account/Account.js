@@ -50,9 +50,11 @@ const renderButtonSection = (navigation) => {
 
 function AccountScreen({ navigation }) {
   return (
-    <SafeAreaView style={styles.container}>
-      {renderInfoSection()}
-      {renderButtonSection(navigation)}
+    <SafeAreaView style={styles.outerContainer}>
+      <View style={styles.container}>
+        {renderInfoSection()}
+        {renderButtonSection(navigation)}
+      </View>
     </SafeAreaView>
   );
 }

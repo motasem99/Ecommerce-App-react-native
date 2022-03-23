@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import Input from '../../components/Input/Input';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import styles from './Styles';
@@ -10,12 +11,14 @@ const renderSearchIcon = () => {
 
 function SearchScreen() {
   return (
-    <SafeAreaView style={styles.container}>
-      <Input
-        placeholder='Type Here ...'
-        bordered
-        renderIconRight={renderSearchIcon}
-      />
+    <SafeAreaView style={styles.outerContainer}>
+      <View style={styles.container}>
+        <Input
+          placeholder='Type Here ...'
+          bordered
+          renderIconRight={renderSearchIcon}
+        />
+      </View>
     </SafeAreaView>
   );
 }
