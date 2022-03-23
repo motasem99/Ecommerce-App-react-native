@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import AppButton from '../../components/AppButton/APpButton';
 import { CURRENCY } from '../../utils/constants';
 import styles from './Styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const renderAddressSection = () => {
   return (
@@ -43,11 +44,11 @@ const renderButton = () => {
 
 function Checkout() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {renderAddressSection()}
       {renderCostOrderSection()}
       {renderButton()}
-    </View>
+    </SafeAreaView>
   );
 }
 

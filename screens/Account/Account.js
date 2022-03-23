@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import PlatformTouchable from '../../components/PlatformTouchable';
 import IonIcon from '../../components/IonIcon/IonIcon';
 import styles from './Styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const renderInfoSection = () => {
   return (
@@ -49,10 +50,10 @@ const renderButtonSection = (navigation) => {
 
 function AccountScreen({ navigation }) {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {renderInfoSection()}
       {renderButtonSection(navigation)}
-    </View>
+    </SafeAreaView>
   );
 }
 

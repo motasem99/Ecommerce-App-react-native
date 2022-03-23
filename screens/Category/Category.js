@@ -3,13 +3,14 @@ import { View, Text } from 'react-native';
 import Product from '../../components/Product/Product';
 import { dummyProduct1 } from '../../utils/DummyData';
 import styles from './styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function CategoryScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.headerText}>Products</Text>
       <Product product={dummyProduct1} />
-    </View>
+    </SafeAreaView>
   );
 }
 

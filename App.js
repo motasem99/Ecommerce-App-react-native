@@ -20,7 +20,7 @@ import CameraIcon from './components/PlayAround/CameraIcon';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Input from './components/Input/Input';
 import SigninScreen from './screens/Signin/Signin';
-import ConfirmationCodeScreen from './screens/ConfirmationCode/Signin';
+import ConfirmationCodeScreen from './screens/ConfirmationCode/ConfirmationCode';
 import Category from './components/Category/Category';
 import {
   dummyCategory,

@@ -3,10 +3,11 @@ import { View } from 'react-native';
 import Input from '../../components/Input/Input';
 import AppButton from '../../components/AppButton/APpButton';
 import styles from './Styles';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 function AddAddressScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View>
         <Input placeholder='Name' stacked wrapperStyle={styles.input} />
         <Input placeholder='Phone' stacked wrapperStyle={styles.input} />
@@ -17,7 +18,7 @@ function AddAddressScreen() {
       </View>
 
       <AppButton title='ADD' />
-    </View>
+    </SafeAreaView>
   );
 }
 
