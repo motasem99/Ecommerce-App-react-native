@@ -45,9 +45,9 @@ import AddAddressScreen from './screens/AddAddress/AddAddress';
 import Order from './components/Order/Order';
 import OrdersScreen from './screens/Orders/Orders';
 import IonIcon from './components/IonIcon/IonIcon';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 import { NavigationContainer } from '@react-navigation/native';
 import AppContainer from './navigation/Navigation';
+import { validate } from './utils/validate';
 
 export default function App() {
   const [input, setInputVal] = useState({
@@ -56,19 +56,10 @@ export default function App() {
     touched: false,
   });
 
-  const validatePhone = (enteredPhone) => {
-    if (enteredPhone.length !== 11) {
-      return false;
-    }
-
-    // return Array.from(enteredPhone).every((char) => char >= 0 && char <= 9);
-    return /^[0-9]+$/.test(enteredPhone);
-  };
-
   const updateInput = (inputVal) => {
     setInputVal({
       value: inputVal,
-      isValid: validatePhone(inputVal),
+      isValid: validate(inputVal, [{ key: 'isMinimumChars', minimumChars: 4 }]),
       touched: true,
     });
   };
