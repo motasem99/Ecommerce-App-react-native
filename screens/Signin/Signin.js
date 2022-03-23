@@ -1,11 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, Text } from 'react-native';
 import styles from './styles';
 import Input from '../../components/Input/Input';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import AppButton from '../../components/AppButton/APpButton';
+import { validate } from '../../utils/validate';
 
 function SigninScreen({ navigation }) {
+  const [input, setInputVal] = useState({
+    value: '',
+    isValid: false,
+    touched: false,
+  });
+
+  const updateInput = (inputVal) => {
+    setInputVal({
+      value: inputVal,
+      isValid: validate(inputVal, [{ key: 'isPhone' }]),
+      touched: true,
+    });
+  };
+
+  const doneHandler = () => {
+    if (!input.isValid) {
+      alert('The phone you entered is not correct!');
+      return;
+    }
+    navigation.navigate('ConfirmationCodeScreen');
+  };
+
   const renderPhoneIcon = () => {
     return <Icon style={styles.icon} name='call' />;
   };
@@ -22,14 +45,12 @@ function SigninScreen({ navigation }) {
         placeholder='Phone'
         wrapperStyle={styles.inputWrapper}
         IconWrapperStyle={styles.iconWrapper}
+        onChangeText={updateInput}
+        keyboardType='numeric'
+        onSubmitEditing={doneHandler}
       />
       <View style={styles.buttonWrapper}>
-        <AppButton
-          title='DONE'
-          onPress={() => {
-            navigation.navigate('ConfirmationCodeScreen');
-          }}
-        />
+        <AppButton title='DONE' onPress={doneHandler} />
       </View>
     </View>
   );
