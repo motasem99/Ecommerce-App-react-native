@@ -5,7 +5,7 @@ import IonIcon from '../components/IonIcon/IonIcon';
 import { TINT_COLOR } from '../utils/Colors';
 import HomeStack from './HomeStack';
 import CartStack from './CartStack';
-import SearchStack from './SearcjStack';
+import SearchStack from './SearchStack';
 import AccountStack from './AccountStack';
 
 const Tab = createBottomTabNavigator();
