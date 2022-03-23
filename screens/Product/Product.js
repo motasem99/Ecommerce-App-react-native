@@ -3,15 +3,17 @@ import { View, Image, Text, Platform } from 'react-native';
 import AddToCartButton from '../../components/AddToCartButton/AddToCartButton';
 import Price from '../../components/Price/Price';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import { dummyProductWithDiscount } from '../../utils/DummyData';
+import { dummyProduct1 } from '../../utils/DummyData';
 import IonIcon from '../../components/IonIcon/IonIcon';
 import styles from './Styles';
 
 const getProduct = (productId) => {
-  return dummyProductWithDiscount;
+  console.log(productId);
+  return dummyProduct1;
 };
 
-function ProductScreen({ productId }) {
+function ProductScreen({ route }) {
+  const { productId } = route.params;
   const product = getProduct(productId);
 
   return (
