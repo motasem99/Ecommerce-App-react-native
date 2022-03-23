@@ -3,6 +3,7 @@ import {
   StyleSheet,
   Text,
   View,
+  TextInput,
   Button,
   Image,
   ScrollView,
@@ -49,13 +50,45 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppContainer from './navigation/Navigation';
 
 export default function App() {
-  return <AppContainer isAuthenticated={true} />;
+  const [inputVal, setInputVal] = useState('');
+
+  const validatePhone = (enteredPhone) => {
+    if (enteredPhone.length !== 11) {
+      return false;
+    }
+
+    return Array.from(enteredPhone).every((char) => char >= 0 && char <= 9);
+  };
+
+  const submitHandler = () => {
+    if (!validatePhone(inputVal)) {
+      alert('something wrong');
+      return;
+    }
+    alert('you entered' + inputVal);
+  };
+
+  return (
+    <View style={styles.container}>
+      <TextInput
+        placeholder='Enter Phone'
+        style={styles.input}
+        onChangeText={setInputVal}
+      />
+      <Button title='SUBMIT' onPress={submitHandler} />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
+    margin: 10,
   },
 });
