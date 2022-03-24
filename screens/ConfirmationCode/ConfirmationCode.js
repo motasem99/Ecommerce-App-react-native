@@ -5,13 +5,31 @@ import Input from '../../components/Input/Input';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import AppButton from '../../components/AppButton/APpButton';
 import { useInput } from '../../utils/useInput';
+import axios from 'axios';
 
-function ConfirmationCodeScreen() {
+function ConfirmationCodeScreen({ route }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const { phone } = route.params;
+
   const [input, setInputVal] = useInput('', [{ key: 'isConfirmationCode' }]);
 
   const doneHandler = () => {
-    if (!input.isValid) {
-      alert('The Confirmation code is not valid!');
+    if (input.isValid) {
+      setIsLoading(true);
+      axios
+        .post('/verify/validate', {
+          phone,
+          code: input.value,
+        })
+        .then((res) => {
+          console.log(res.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   };
 
@@ -32,7 +50,12 @@ function ConfirmationCodeScreen() {
         keyboardType='numeric'
       />
       <View style={styles.buttonWrapper}>
-        <AppButton title='DONE' onPress={doneHandler} />
+        <AppButton
+          title='DONE'
+          onPress={doneHandler}
+          disabled={!input.isValid}
+          isLoading={isLoading}
+        />
       </View>
     </View>
   );
