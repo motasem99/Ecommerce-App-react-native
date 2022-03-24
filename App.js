@@ -49,6 +49,7 @@ import IonIcon from './components/IonIcon/IonIcon';
 import { NavigationContainer } from '@react-navigation/native';
 import AppContainer from './navigation/Navigation';
 import { validate } from './utils/validate';
+import axios from 'axios';
 
 export default function App() {
   const [repos, setRepos] = useState([]);
@@ -56,16 +57,11 @@ export default function App() {
 
   const getReposHandler = () => {
     setLoading(true);
-    fetch(`https://api.github.com/users/motasem99/repos`)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        throw new Error('error');
-      })
+    axios
+      .get(`https://api.github.com/users/motasem99/repos`)
       .then((jsonRes) => {
         console.log('Json Response');
-        setRepos(jsonRes);
+        setRepos(jsonRes.data);
       })
       .catch((err) => console.log(err))
       .finally(() => {
