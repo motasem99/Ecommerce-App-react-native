@@ -10,6 +10,7 @@ import {
   FlatList,
   SectionList,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import AppButton from './components/AppButton/APpButton';
 import Counter from './components/PlayAround/Counter';
@@ -50,12 +51,45 @@ import AppContainer from './navigation/Navigation';
 import { validate } from './utils/validate';
 
 export default function App() {
-  return <AppContainer />;
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getReposHandler = () => {
+    setLoading(true);
+    fetch(`https://api.github.com/users/motasem99/repos`)
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        throw new Error('error');
+      })
+      .then((jsonRes) => {
+        console.log('Json Response');
+        setRepos(jsonRes);
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
+  return (
+    <View style={styles.container}>
+      <Button title='GET Repos' onPress={getReposHandler} />
+      {loading && <ActivityIndicator size='large' color='#0000ff' />}
+      <View>
+        {repos.map((repo) => {
+          return <Text>{repo.name}</Text>;
+        })}
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
