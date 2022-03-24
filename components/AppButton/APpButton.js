@@ -8,13 +8,14 @@ export default function AppButton({
   wrapperStyle,
   titleStyle,
   isLoading,
+  disabled,
   ...rest
 }) {
   return (
     <PlatformTouchable
-      style={[styles.wrapper, wrapperStyle]}
       {...rest}
-      disabled={isLoading}
+      disabled={disabled || isLoading}
+      style={[styles.wrapper, wrapperStyle, disabled ? styles.disabled : null]}
     >
       {isLoading ? (
         <ActivityIndicator color='white' />

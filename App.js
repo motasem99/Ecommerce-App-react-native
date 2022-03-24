@@ -50,36 +50,11 @@ import { NavigationContainer } from '@react-navigation/native';
 import AppContainer from './navigation/Navigation';
 import { validate } from './utils/validate';
 import axios from 'axios';
+import { configureAxios } from './utils/helperFunctions';
 
 export default function App() {
-  const [repos, setRepos] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const getReposHandler = () => {
-    setLoading(true);
-    axios
-      .get(`https://api.github.com/users/motasem99/repos`)
-      .then((jsonRes) => {
-        console.log('Json Response');
-        setRepos(jsonRes.data);
-      })
-      .catch((err) => console.log(err))
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  return (
-    <View style={styles.container}>
-      <Button title='GET Repos' onPress={getReposHandler} />
-      {loading && <ActivityIndicator size='large' color='#0000ff' />}
-      <View>
-        {repos.map((repo) => {
-          return <Text>{repo.name}</Text>;
-        })}
-      </View>
-    </View>
-  );
+  configureAxios();
+  return <AppContainer />;
 }
 
 const styles = StyleSheet.create({

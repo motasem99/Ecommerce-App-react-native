@@ -5,16 +5,24 @@ import Input from '../../components/Input/Input';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import AppButton from '../../components/AppButton/APpButton';
 import { useInput } from '../../utils/useInput';
+import axios from 'axios';
 
 function SigninScreen({ navigation }) {
   const [input, setInputVal] = useInput('', [{ key: 'isPhone' }]);
-
+  const [isLoading, setIsLoading] = useState(false);
   const doneHandler = () => {
-    if (!input.isValid) {
-      alert('The phone you entered is not correct!');
-      return;
+    if (input.isValid) {
+      setIsLoading(true);
+      axios
+        .post('/verify', { phone: input.value })
+        .then((res) => {
+          navigation.navigate('ConfirmationCodeScreen');
+        })
+        .catch((err) => console.log(err))
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
-    navigation.navigate('ConfirmationCodeScreen');
   };
 
   const renderPhoneIcon = () => {
@@ -38,7 +46,12 @@ function SigninScreen({ navigation }) {
         onSubmitEditing={doneHandler}
       />
       <View style={styles.buttonWrapper}>
-        <AppButton title='DONE' onPress={doneHandler} />
+        <AppButton
+          title='DONE'
+          onPress={doneHandler}
+          disabled={!input.isValid}
+          isLoading={isLoading}
+        />
       </View>
     </View>
   );
