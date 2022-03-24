@@ -51,10 +51,21 @@ import AppContainer from './navigation/Navigation';
 import { validate } from './utils/validate';
 import axios from 'axios';
 import { configureAxios } from './utils/helperFunctions';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { TOKEN_KEY } from './utils/constants';
 
 export default function App() {
+  const [token, setToken] = useState('NOT_YET');
+
+  useEffect(() => {
+    AsyncStorage.getItem(TOKEN_KEY).then((val) => {
+      setToken(val);
+      axios.defaults.headers.Authorization = 'Bearer ' + val;
+    });
+  }, []);
+
   configureAxios();
-  return <AppContainer />;
+  return token !== 'NOT_YET' && <AppContainer isAuthenticated={token} />;
 }
 
 const styles = StyleSheet.create({

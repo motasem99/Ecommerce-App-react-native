@@ -6,6 +6,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import AppButton from '../../components/AppButton/APpButton';
 import { useInput } from '../../utils/useInput';
 import axios from 'axios';
+import { TOKEN_KEY } from '../../utils/constants';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function ConfirmationCodeScreen({ route }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +24,9 @@ function ConfirmationCodeScreen({ route }) {
           code: input.value,
         })
         .then((res) => {
-          console.log(res.data);
+          const { token } = res.data;
+          axios.defaults.headers.Authorization = 'Bearer ' + token;
+          AsyncStorage.setItem(TOKEN_KEY, token);
         })
         .catch((err) => {
           console.log(err);
