@@ -78,7 +78,7 @@ export default function App() {
   }, []);
 
   configureAxios();
-  return token !== 'NOT_YET' && <AppContainer isAuthenticated={token} />;
+  return token !== '' && <AppContainer isAuthenticated={token} />;
 }
 
 const styles = StyleSheet.create({
