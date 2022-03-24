@@ -53,13 +53,26 @@ import axios from 'axios';
 import { configureAxios } from './utils/helperFunctions';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { TOKEN_KEY } from './utils/constants';
+import authStore from './TryFlux/AuthStore';
+import dispatcher from './TryFlux/dispatcher';
 
 export default function App() {
-  const [token, setToken] = useState('NOT_YET');
+  const [token, setToken] = useState(authStore.token);
+
+  const handleTokenChange = () => {
+    setToken(authStore.token);
+  };
+
+  useEffect(() => {
+    authStore.on('change', handleTokenChange);
+  }, []);
 
   useEffect(() => {
     AsyncStorage.getItem(TOKEN_KEY).then((val) => {
-      setToken(val);
+      dispatcher.dispatch({
+        type: 'SET_TOKEN',
+        payload: { token: val },
+      });
       axios.defaults.headers.Authorization = 'Bearer ' + val;
     });
   }, []);

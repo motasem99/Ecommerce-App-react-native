@@ -8,6 +8,7 @@ import { useInput } from '../../utils/useInput';
 import axios from 'axios';
 import { TOKEN_KEY } from '../../utils/constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import dispatcher from '../../TryFlux/dispatcher';
 
 function ConfirmationCodeScreen({ route }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -24,8 +25,16 @@ function ConfirmationCodeScreen({ route }) {
           code: input.value,
         })
         .then((res) => {
-          const { token } = res.data;
+          const { token, userData } = res.data;
           axios.defaults.headers.Authorization = 'Bearer ' + token;
+          dispatcher.dispatch({
+            type: 'SET_TOKEN',
+            payload: { token },
+          });
+          dispatcher.dispatch({
+            type: 'SET_USER',
+            payload: { user: userData },
+          });
           AsyncStorage.setItem(TOKEN_KEY, token);
         })
         .catch((err) => {

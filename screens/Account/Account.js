@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import PlatformTouchable from '../../components/PlatformTouchable';
 import IonIcon from '../../components/IonIcon/IonIcon';
 import styles from './Styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import authStore from '../../TryFlux/AuthStore';
 
-const renderInfoSection = () => {
+const renderInfoSection = (user) => {
   return (
     <View style={styles.infoSection}>
       <IonIcon name='person' style={styles.personIcon} />
       <View style={styles.verticalLine} />
       <View>
-        <Text style={styles.infoText}>Mutasem Kwaik</Text>
-        <Text style={styles.infoText}>5204565146846</Text>
+        <Text style={styles.infoText}>{user.name || 'HIT to enter name'}</Text>
+        <Text style={styles.infoText}>{user.phone}</Text>
       </View>
     </View>
   );
@@ -49,10 +50,20 @@ const renderButtonSection = (navigation) => {
 };
 
 function AccountScreen({ navigation }) {
+  const [user, setUser] = useState(authStore.user);
+
+  const handleUserUpdate = () => {
+    setUser(authStore.user);
+  };
+
+  useEffect(() => {
+    authStore.on('change', handleUserUpdate);
+  }, []);
+
   return (
     <SafeAreaView style={styles.outerContainer}>
       <View style={styles.container}>
-        {renderInfoSection()}
+        {renderInfoSection(user)}
         {renderButtonSection(navigation)}
       </View>
     </SafeAreaView>
