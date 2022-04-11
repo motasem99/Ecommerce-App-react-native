@@ -6,6 +6,7 @@ import IonIcon from '../../components/IonIcon/IonIcon';
 import styles from './Styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import authStore from '../../TryFlux/AuthStore';
+import { connect } from 'react-redux';
 
 const renderInfoSection = (user) => {
   return (
@@ -49,17 +50,7 @@ const renderButtonSection = (navigation) => {
   );
 };
 
-function AccountScreen({ navigation }) {
-  const [user, setUser] = useState(authStore.user);
-
-  const handleUserUpdate = () => {
-    setUser(authStore.user);
-  };
-
-  useEffect(() => {
-    authStore.on('change', handleUserUpdate);
-  }, []);
-
+function AccountScreen({ navigation, user }) {
   return (
     <SafeAreaView style={styles.outerContainer}>
       <View style={styles.container}>
@@ -70,4 +61,8 @@ function AccountScreen({ navigation }) {
   );
 }
 
-export default AccountScreen;
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+});
+
+export default connect(mapStateToProps)(AccountScreen);

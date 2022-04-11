@@ -6,11 +6,12 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import AppButton from '../../components/AppButton/APpButton';
 import { useInput } from '../../utils/useInput';
 import axios from 'axios';
-import { TOKEN_KEY } from '../../utils/constants';
+import { TOKEN_KEY, USER_KEY } from '../../utils/constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import dispatcher from '../../TryFlux/dispatcher';
+import { connect } from 'react-redux';
 
-function ConfirmationCodeScreen({ route }) {
+function ConfirmationCodeScreen({ route, setToken, setUser }) {
   const [isLoading, setIsLoading] = useState(false);
   const { phone } = route.params;
 
@@ -27,15 +28,10 @@ function ConfirmationCodeScreen({ route }) {
         .then((res) => {
           const { token, userData } = res.data;
           axios.defaults.headers.Authorization = 'Bearer ' + token;
-          dispatcher.dispatch({
-            type: 'SET_TOKEN',
-            payload: { token },
-          });
-          dispatcher.dispatch({
-            type: 'SET_USER',
-            payload: { user: userData },
-          });
+          setToken(token);
+          setUser(userData);
           AsyncStorage.setItem(TOKEN_KEY, token);
+          AsyncStorage.setItem(USER_KEY, JSON.stringify(userData));
         })
         .catch((err) => {
           console.log(err);
@@ -74,4 +70,9 @@ function ConfirmationCodeScreen({ route }) {
   );
 }
 
-export default ConfirmationCodeScreen;
+const mapDispatchToProps = (dispatch) => ({
+  setToken: (token) => dispatch({ type: 'SET_TOKEN', payload: { token } }),
+  setUser: (user) => dispatch({ type: 'SET_USER', payload: { user } }),
+});
+
+export default connect(null, mapDispatchToProps)(ConfirmationCodeScreen);
